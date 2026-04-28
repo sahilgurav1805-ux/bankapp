@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Premium Account Opening</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            min-height:100vh;
+            font-family:'Segoe UI',sans-serif;
+            background:
+              linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.78)),
+              url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80');
+            background-size:cover;
+            background-position:center;
+            padding:30px 15px;
+        }
+
+        .form-box{
+            max-width:720px;
+            margin:auto;
+            background:rgba(15,23,42,0.94);
+            border-radius:28px;
+            padding:34px;
+            color:white;
+            box-shadow:0 25px 60px rgba(0,0,0,0.55);
+            border:1px solid rgba(255,255,255,0.08);
+        }
+
+        .title{
+            text-align:center;
+            font-size:32px;
+            font-weight:800;
+            color:#38bdf8;
+            margin-bottom:6px;
+        }
+
+        .subtitle{
+            text-align:center;
+            color:#cbd5e1;
+            margin-bottom:22px;
+        }
+
+        .status{
+            background:rgba(59,130,246,0.12);
+            border:1px solid rgba(59,130,246,0.25);
+            color:#bfdbfe;
+            padding:12px;
+            border-radius:14px;
+            text-align:center;
+            margin-bottom:22px;
+            font-weight:600;
+        }
+
+        .form-control,.form-select{
+            background:#0f172a;
+            border:1px solid #334155;
+            color:white;
+            border-radius:14px;
+            padding:12px;
+            margin-bottom:14px;
+        }
+
+        .form-control:focus,.form-select:focus{
+            background:#0f172a;
+            color:white;
+            border-color:#38bdf8;
+            box-shadow:0 0 0 0.2rem rgba(56,189,248,0.15);
+        }
+
+        .form-select option{
+            color:black;
+        }
+
+        .submit-btn{
+            width:100%;
+            border:none;
+            padding:14px;
+            border-radius:16px;
+            font-size:17px;
+            font-weight:700;
+            background:linear-gradient(135deg,#2563eb,#38bdf8);
+            color:white;
+            margin-top:8px;
+            transition:0.25s ease;
+        }
+
+        .submit-btn:hover{
+            transform:translateY(-2px);
+        }
+
+        .back-link{
+            display:block;
+            text-align:center;
+            margin-top:18px;
+            color:#93c5fd;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .footer-note{
+            text-align:center;
+            color:#94a3b8;
+            font-size:13px;
+            margin-top:18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <div class="title">🏦 Open New Account</div>
+    <div class="subtitle">Premium Digital Banking Registration</div>
+
+    <div class="status">
+        🔒 Secure KYC Form • Fast Approval Process
+    </div>
+
+    <form action="/create" method="post">
+
+        <input class="form-control" name="name" placeholder="Full Name" required>
+        <input class="form-control" name="fatherName" placeholder="Father Name" required>
+        <input class="form-control" name="dob" type="date" required>
+
+        <select class="form-select" name="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <input class="form-control" name="mobile" placeholder="Mobile Number" required>
+        <input class="form-control" name="email" placeholder="Email Address" required>
+        <input class="form-control" name="address" placeholder="Address">
+        <input class="form-control" name="aadhaar" placeholder="Aadhaar Number">
+        <input class="form-control" name="pan" placeholder="PAN Number">
+
+        <select class="form-select" name="accountType">
+            <option>Savings</option>
+            <option>Current</option>
+        </select>
+
+        <input class="form-control" name="occupation" placeholder="Occupation">
+        <input class="form-control" name="nationality" placeholder="Nationality">
+        <input class="form-control" type="password" name="pin" placeholder="Create Secure PIN" required>
+
+        <button class="submit-btn">✅ Create Account</button>
+
+    </form>
+
+    <a href="/" class="back-link">⬅ Back to Login</a>
+
+    <div class="footer-note">
+        ⚡ Smart • Secure • Instant Banking Access
+    </div>
+
+</div>
+
+</body>
+</html>

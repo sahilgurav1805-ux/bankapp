@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Premium AI Banking Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        min-height:100vh;
+        font-family:'Segoe UI',sans-serif;
+        background:
+          linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.80)),
+          url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
+        background-size:cover;
+        background-position:center;
+        padding:25px 15px;
+        color:white;
+    }
+
+    .main-box{
+        max-width:1100px;
+        margin:auto;
+        background:rgba(15,23,42,0.94);
+        border-radius:28px;
+        padding:32px;
+        box-shadow:0 25px 60px rgba(0,0,0,0.55);
+        border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .title{
+        text-align:center;
+        font-size:34px;
+        font-weight:800;
+        color:#a78bfa;
+    }
+
+    .subtitle{
+        text-align:center;
+        color:#cbd5e1;
+        margin-bottom:24px;
+    }
+
+    .card-box{
+        background:rgba(255,255,255,0.05);
+        border:1px solid rgba(255,255,255,0.08);
+        border-radius:22px;
+        padding:24px;
+        text-align:center;
+        transition:0.25s ease;
+        height:100%;
+    }
+
+    .card-box:hover{
+        transform:translateY(-5px);
+    }
+
+    .card-box h5{
+        margin-bottom:16px;
+        font-size:22px;
+    }
+
+    .ai-chat{
+        margin-top:28px;
+        background:#0b1220;
+        border-radius:22px;
+        padding:20px;
+        border:1px solid rgba(255,255,255,0.06);
+    }
+
+    #chat{
+        height:260px;
+        overflow-y:auto;
+        padding:10px;
+        background:rgba(255,255,255,0.03);
+        border-radius:16px;
+        margin-bottom:12px;
+    }
+
+    #chat p{
+        margin-bottom:10px;
+    }
+
+    .form-control{
+        background:#111827;
+        color:white;
+        border:1px solid #334155;
+        border-radius:14px;
+        padding:12px;
+    }
+
+    .form-control:focus{
+        background:#111827;
+        color:white;
+        border-color:#a78bfa;
+        box-shadow:none;
+    }
+
+    .send-btn{
+        margin-top:12px;
+        width:100%;
+        border:none;
+        padding:14px;
+        border-radius:16px;
+        font-weight:700;
+        background:linear-gradient(135deg,#7c3aed,#a78bfa);
+        color:white;
+    }
+
+    .back-btn{
+        margin-top:18px;
+        width:100%;
+        border-radius:16px;
+        padding:12px;
+        font-weight:700;
+    }
+
+    .footer{
+        text-align:center;
+        color:#94a3b8;
+        font-size:13px;
+        margin-top:18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="main-box">
+
+  <div class="title">🤖 AI Smart Banking</div>
+  <div class="subtitle">Next Generation Intelligent Banking Experience</div>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card-box">
+        <h5>💰 Balance</h5>
+        <a href="/balance" class="btn btn-primary w-100">Check Now</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-box">
+        <h5>💸 Withdraw</h5>
+        <a href="/withdraw" class="btn btn-danger w-100">Open</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-box">
+        <h5>📊 Statement</h5>
+        <a href="/transactions" class="btn btn-warning w-100">View</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ai-chat">
+
+    <h5 class="mb-3">💬 AI Assistant</h5>
+
+    <div id="chat">
+      <p>👋 Hello! I’m your premium banking assistant.</p>
+    </div>
+
+    <input id="input" class="form-control" placeholder="Ask about balance, PIN, withdraw...">
+
+    <button class="send-btn" onclick="ask()">Send Message</button>
+
+  </div>
+
+  <a href="/dashboard" class="btn btn-light back-btn">⬅ Back to Dashboard</a>
+
+  <div class="footer">
+    ⚡ AI Powered • Smart • Secure Banking
+  </div>
+
+</div>
+
+<script>
+  function ask(){
+      let input = document.getElementById("input").value.trim();
+      if(input === "") return;
+
+      let chat = document.getElementById("chat");
+      let response = "";
+
+      let msg = input.toLowerCase();
+
+      if(msg.includes("balance")){
+          response = "💰 Open Balance page to view your latest available balance.";
+      } else if(msg.includes("withdraw")){
+          response = "💸 You can withdraw cash securely from the Withdraw page.";
+      } else if(msg.includes("pin")){
+          response = "🔐 Keep your PIN private and change it regularly.";
+      } else if(msg.includes("statement")){
+          response = "📄 View Mini Statement for recent transactions.";
+      } else {
+          response = "🤖 I'm learning more banking queries every day.";
+      }
+
+      chat.innerHTML += "<p>🧑 You: " + input + "</p>";
+      chat.innerHTML += "<p>🤖 AI: " + response + "</p>";
+
+      document.getElementById("input").value = "";
+      chat.scrollTop = chat.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
