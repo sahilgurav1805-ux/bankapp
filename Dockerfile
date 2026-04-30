@@ -1,9 +1,9 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
 COPY . .
 
-RUN chmod +x mvnw && ./mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
-CMD ["java", "-jar", "target/bankapp-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/*.jar"]
